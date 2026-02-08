@@ -514,8 +514,13 @@ function exportTweets() {
     showNotification('تم تصدير التغريدات!');
 }
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', initializeTweetsSection);
+// Initialize on page load - only if tweets section exists
+document.addEventListener('DOMContentLoaded', function() {
+    const tweetsContainer = document.getElementById('tweetsContainer');
+    if (tweetsContainer) {
+        initializeTweetsSection();
+    }
+});
 
 // Make functions globally available
 window.toggleTweetLike = toggleTweetLike;
